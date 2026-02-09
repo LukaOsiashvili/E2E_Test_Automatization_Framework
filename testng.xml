@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="E2E_TA_Framework" parallel="classes">
+    <test name="E2E_TA_Framework_Tests">
+        <classes>
+            <class name="tests.ui.AuthenticationTests"/>
+        </classes>
+    </test>
+</suite>
