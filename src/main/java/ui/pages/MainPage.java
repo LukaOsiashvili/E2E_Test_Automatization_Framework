@@ -1,7 +1,7 @@
-package pages;
+package ui.pages;
 
-import components.Header;
-import components.Footer;
+import ui.components.Header;
+import ui.components.Footer;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

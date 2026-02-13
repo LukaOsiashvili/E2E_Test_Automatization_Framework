@@ -1,8 +1,8 @@
-package components;
+package ui.components;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pages.BasePage;
+import ui.pages.BasePage;
 
 public class Header extends BasePage {
 
@@ -12,6 +12,8 @@ public class Header extends BasePage {
     private final By productsLink = By.xpath("//a[text()=' Products']");
     private final By cartLink = By.xpath("//a[text()=' Cart']");
     private final By signupLoginLink = By.xpath("//a[text()=' Signup / Login']");
+    private final By testCasesLink = By.xpath("//a[text()=' Test Cases']");
+    private final By contactUsLink = By.xpath("//a[text()=' Contact us']");
     private final By logoutLink = By.xpath("//a[text()=' Logout']");
     private final By deleteAccountLink = By.xpath("//a[text()=' Delete Account']");
     private final By loggedInAsText = By.xpath("//a[contains(text(), 'Logged in as')]");
@@ -32,10 +34,17 @@ public class Header extends BasePage {
         click(cartLink);
     }
 
+    public void clickTestCases(){
+        click(testCasesLink);
+    }
+
     public void clickSignupLogin() {
         click(signupLoginLink);
     }
 
+    public void clickContactUs(){
+        click(contactUsLink);
+    }
     public void clickLogout() {
         click(logoutLink);
     }

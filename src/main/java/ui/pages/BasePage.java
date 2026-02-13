@@ -1,4 +1,4 @@
-package pages;
+package ui.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,9 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+
 public class BasePage {
-
-
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected Actions action;
@@ -54,6 +53,23 @@ public class BasePage {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    protected String getTextAfter(By locator, String separator) {
+        String fullText = getText(locator);
+        if (fullText.contains(separator)) {
+            String[] parts = fullText.split(separator, 2);
+            return parts.length > 1 ? parts[1].trim() : fullText.trim();
+        }
+        return fullText.trim();
+    }
+
+    protected String getTextBefore(By locator, String separator) {
+        String fullText = getText(locator);
+        if (fullText.contains(separator)) {
+            return fullText.split(separator, 2)[0].trim();
+        }
+        return fullText.trim();
     }
 
 }
