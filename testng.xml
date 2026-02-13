@@ -1,8 +1,16 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="E2E_TA_Framework" parallel="classes">
-    <test name="E2E_TA_Framework_Tests">
+    <test name="UI Tests">
         <classes>
             <class name="tests.ui.AuthenticationTests"/>
+            <class name="tests.ui.BasicFeaturesFunctionalityTests"/>
+        </classes>
+    </test>
+
+    <test name="API Tests">
+        <classes>
+            <class name="tests.api.UserAPITest"/>
+            <class name="tests.api.ProductAPITest"/>
         </classes>
     </test>
 </suite>
