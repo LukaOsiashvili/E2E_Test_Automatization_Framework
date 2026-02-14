@@ -1,5 +1,6 @@
 package ui.components;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ui.pages.BasePage;
@@ -17,23 +18,29 @@ public class Footer extends BasePage {
         super(driver);
     }
 
+    @Step("Scroll to footer")
     public void scrollToFooter() {
         action.scrollToElement(driver.findElement(copyrightMessage)).perform();
     }
 
+    @Step("Subscribe to newsletter with email: {email}")
     public void subscribeToNewsletter(String email) {
         scrollToFooter();
         typeIn(subscriptionEmailField, email);
         click(subscribeButton);
     }
 
+    @Step("Get subscription success message")
     public String getSubscriptionSuccessMessage() {
         return getText(successMessage);
     }
 
+    @Step("Verify subscription success message is visible")
     public boolean isSubscriptionSuccessMessageVisible(){
         return isVisible(successMessage);
     }
+
+    @Step("Verify subscription header is visible")
     public boolean isSubscribeHeaderVisible(){
         return isVisible(subscriptionHeading);
     }

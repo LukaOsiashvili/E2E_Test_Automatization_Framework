@@ -1,12 +1,16 @@
 package api.client;
 
 import api.models.User;
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import utils.RequestSpecFactory;
 
 import static io.restassured.RestAssured.given;
 
 public class UserClient {
+
+    @Step("API: Create user account with email: {user.email}")
+
     public Response createUser(User user){
         return given()
                 .spec(RequestSpecFactory.formSpec())
@@ -31,6 +35,7 @@ public class UserClient {
                 .post("/createAccount");
     }
 
+    @Step("API: Get user details by email: {email}")
     public Response getUserDetailByEmail(String email){
         return given()
                 .spec(RequestSpecFactory.formSpec())
@@ -39,6 +44,7 @@ public class UserClient {
                 .get("/getUserDetailByEmail");
     }
 
+    @Step("API: Update user account with email: {user.email}")
     public Response updateUser(User user){
         return given()
                 .spec(RequestSpecFactory.formSpec())
@@ -63,6 +69,7 @@ public class UserClient {
                 .put("/updateAccount");
     }
 
+    @Step("API: Delete user account with email: {email}")
     public Response deleteUser(String email, String password){
         return given()
                 .spec(RequestSpecFactory.formSpec())
@@ -72,6 +79,7 @@ public class UserClient {
                 .delete("/deleteAccount");
     }
 
+    @Step("API: Verify login with email: {email}")
     public Response verifyLogin(String email, String password) {
         return given()
                 .spec(RequestSpecFactory.formSpec())
@@ -81,6 +89,7 @@ public class UserClient {
                 .post("/verifyLogin");
     }
 
+    @Step("API: Verify login without email parameter")
     public Response verifyLoginWithoutEmail(String password) {
         return given()
                 .spec(RequestSpecFactory.formSpec())

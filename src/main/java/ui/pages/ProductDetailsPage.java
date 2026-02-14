@@ -19,6 +19,7 @@ public class ProductDetailsPage extends BasePage{
     private final By quantityInput = By.id("quantity");
     private final By addToCartButton = By.cssSelector("button.cart");
 
+    @Step("Verify product details page is loaded")
     public boolean isProductDetailsPageLoaded(){
         return isVisible(productName) && isVisible(productPrice);
     }

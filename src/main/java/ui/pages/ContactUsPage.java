@@ -26,6 +26,7 @@ public class ContactUsPage extends BasePage{
     private final By successAlertStatus = By.xpath("//div[contains(text(), 'Success! Your details have been submitted successfully.')]");
     private final By backToHomeButton = By.xpath("//a[contains(text(), ' Home')]");
 
+    @Step("Fill and submit contact us form: name={name}, email={email}, subject={subject}")
     public void enterFormInformationAndSubmit(String name, String email, String subject, String message, String filePath){
         typeIn(nameInput, name);
         typeIn(emailInput, email);
@@ -49,7 +50,7 @@ public class ContactUsPage extends BasePage{
         }
     }
 
-    @Step("Upload file")
+    @Step("Upload file: {filePath}")
     public void uploadFile(String filePath) {
         File file = new File(filePath);
         if (!file.exists()) {
@@ -57,14 +58,18 @@ public class ContactUsPage extends BasePage{
         }
         driver.findElement(fileUploadInput).sendKeys(file.getAbsolutePath());
     }
+
+    @Step("Navigate to home page from contact us page")
     public void navigateToHome(){
         click(backToHomeButton);
     }
 
+    @Step("Verify form submission was successful")
     public boolean isSuccessful(){
         return isVisible(successAlertStatus);
     }
 
+    @Step("Verify 'Get In Touch' form is visible")
     public boolean isContactUsFormVisible(){
         return isVisible(contactUsFormBanner);
     }

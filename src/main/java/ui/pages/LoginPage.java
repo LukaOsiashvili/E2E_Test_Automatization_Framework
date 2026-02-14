@@ -1,5 +1,6 @@
 package ui.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -24,6 +25,7 @@ public class LoginPage extends BasePage {
     private final By registerButton = By.xpath("//button[contains(text(), 'Signup')]");
     private final By alreadyUsedEmailError = By.xpath("//p[contains(text(), 'Email Address already exist!')]");
 
+    @Step("Enter login credentials and submit: email={email}")
     public void enterLoginInfoAndSubmit(String email, String password){
         typeIn(emailInput, email);
         typeIn(passwordInput, password);
@@ -31,6 +33,7 @@ public class LoginPage extends BasePage {
         click(loginButton);
     }
 
+    @Step("Register new user: name={name}, email={email}")
     public void registerUser(String name, String email){
         typeIn(registerNameInput, name);
         typeIn(registerEmailInput, email);
@@ -38,26 +41,24 @@ public class LoginPage extends BasePage {
         click(registerButton);
     }
 
+    @Step("Verify login form is visible")
     public boolean isLoginFormVisible() {
         return isVisible(loginFormBanner);
     }
 
+    @Step("Verify incorrect credentials error is visible")
     public boolean isIncorrectCredentialsErrorVisible(){
         return isVisible(incorrectCredentialsError);
     }
 
+    @Step("Verify signup form is visible")
     public boolean isSignupFormVisible() {
         return isVisible(registerFormBanner);
     }
+
+    @Step("Verify 'email already exists' error is visible")
     public boolean isAlreadyUsedEmailErrorVisible(){
         return isVisible(alreadyUsedEmailError);
     }
 
-    public String getLoginFormBanner() {
-        return getText(loginFormBanner);
-    }
-
-    public String getRegisterFormBanner(){
-        return getText(registerFormBanner);
-    }
 }

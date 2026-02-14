@@ -1,5 +1,6 @@
 package ui.pages;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -35,7 +36,7 @@ public class SignupPage extends BasePage{
     private final By mobileNumberInput = By.id("mobile_number");
     private final By createAccountButton = By.xpath("//button[contains(text(), 'Create Account')]");
 
-
+    @Step("Select title: {title}")
     public void selectTitle(String title){
         if(title.equals("Mr")){
             click(titleMrRadio);
@@ -44,20 +45,24 @@ public class SignupPage extends BasePage{
         }
     }
 
+    @Step("Enter name: {name}")
     public void enterName(String name){
         typeIn(nameInput, name);
     }
 
+    @Step("Enter password")
     public void enterPassword(String password){
         typeIn(passwordInput, password);
     }
 
+    @Step("Enter date of birth: {day}/{month}/{year}")
     public void enterDOB(String day, String month, String year){
         selectByValue(dayDropdown, day);
         selectByValue(monthDropdown, month);
         selectByValue(yearDropdown, year);
     }
 
+    @Step("Subscribe to additional info: newsletter={newsletter}, offers={offers}")
     public void subscribeAdditionalInfo(boolean newsletter, boolean offers){
         if(newsletter){
             click(newsletterCheckbox);
@@ -68,15 +73,18 @@ public class SignupPage extends BasePage{
         }
     }
 
+    @Step("Enter full name: {firstName} {lastName}")
     public void enterFullName(String firstName, String lastName){
         typeIn(firstNameInput, firstName);
         typeIn(lastNameInput, lastName);
     }
 
+    @Step("Enter company name: {companyName}")
     public void enterCompanyName(String companyName){
         typeIn(companyNameInput, companyName);
     }
 
+    @Step("Enter address information")
     public void enterAddressInfo(String addressPrimary, String addressSecondary, String country, String state, String city, String zipcode){
         typeIn(addressPrimaryInput, addressPrimary);
         if(addressSecondary != null) typeIn(addressSecondaryInput, addressSecondary);
@@ -86,19 +94,25 @@ public class SignupPage extends BasePage{
         typeIn(zipcodeInput, zipcode);
     }
 
+    @Step("Enter mobile number: {mobileNumber}")
     public void enterMobileNumber(String mobileNumber){
         typeIn(mobileNumberInput, mobileNumber);
     }
 
+    @Step("Click 'Create Account' button")
     public void createAccount(){
         click(createAccountButton);
     }
 
+    @Step("Verify signup form is visible")
     public boolean isSignupFormVisible(){
         return isVisible(signupFormBanner);
     }
 
+    @Step("Scroll to address information section")
     public void scrollToAddressInfo(){
         action.scrollToElement(driver.findElement(addressInfoBanner)).perform();
     }
+
+
 }

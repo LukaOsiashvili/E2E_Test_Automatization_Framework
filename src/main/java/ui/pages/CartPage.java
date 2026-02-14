@@ -1,5 +1,6 @@
 package ui.pages;
 
+import io.qameta.allure.Step;
 import ui.components.Header;
 import ui.components.Footer;
 import org.openqa.selenium.WebDriver;
@@ -16,10 +17,12 @@ public class CartPage extends BasePage{
         this.footer = new Footer(driver);
     }
 
+    @Step("Get header component")
     public Header getHeader(){
         return header;
     }
 
+    @Step("Get footer component")
     public Footer getFooter(){
         return footer;
     }
