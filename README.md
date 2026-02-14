@@ -1,7 +1,7 @@
 # End-to-End Test Automation Framework
+-Author: Luka Osiashvili
 
 A comprehensive test automation framework for the [Automation Exercise](https://automationexercise.com) platform, implementing both UI and API testing using Java, Selenium WebDriver, RestAssured, and TestNG. 
-Author: Luka Osiashvili
 
 ---
 
