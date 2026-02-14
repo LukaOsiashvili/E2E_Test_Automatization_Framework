@@ -9,28 +9,29 @@ import org.openqa.selenium.edge.EdgeOptions;
 import java.time.Duration;
 
 public class DriverFactory {
-    private static WebDriver driver;
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver getDriver() {
-        return driver;
+        return driver.get();
     }
 
     public static void initDriver() {
-
-//        ChromeOptions options = new ChromeOptions();
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--incognito");
-        options.addArguments("--start-maximized");
-//        driver = new ChromeDriver();
-        driver = new EdgeDriver(options);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        options.addArguments("--start-maximizedCC");
+
+        WebDriver webDriver = new EdgeDriver(options);
+        webDriver.manage().window().maximize();
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.set(webDriver);
     }
 
     public static void quitDriver() {
-        if (driver != null) {
-            driver.quit();
-            driver = null;
+        WebDriver webDriver = driver.get();
+        if (webDriver != null) {
+            webDriver.quit();
+            driver.remove();
         }
     }
 }
