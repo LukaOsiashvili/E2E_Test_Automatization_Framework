@@ -6,7 +6,6 @@ import ui.components.Footer;
 import org.openqa.selenium.WebDriver;
 
 public class CartPage extends BasePage{
-
     protected Header header;
     protected Footer footer;
 

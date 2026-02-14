@@ -18,7 +18,7 @@ public class DriverFactory {
     public static void initDriver() {
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--incognito");
-        options.addArguments("--start-maximizedCC");
+        options.addArguments("--start-maximized");
 
         WebDriver webDriver = new EdgeDriver(options);
         webDriver.manage().window().maximize();
